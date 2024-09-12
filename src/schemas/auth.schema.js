@@ -7,12 +7,12 @@ export const registerShema = z.object({
     email: z.string({
         required_error: 'El correo es requerido'
     }).email({
-        mensaje: 'correo invalido'
+        message: 'correo invalido'
     }),
     password: z.string({
         required_error: 'La contraseña es requerida'
     }).min(6, {
-        mensaje: 'La contraseña debe tener mas de 6 caracteres'
+        message: 'La contraseña debe tener mas de 6 caracteres'
     })
 })
 
@@ -20,11 +20,11 @@ export const loginShema = z.object({
     email: z.string({
         required_error: 'El correo es requerido'
     }).email({
-        mensaje: 'Correo invalido'
+        message: 'Correo invalido'
     }),
     password: z.string({
         required_error: 'La contraseña es requerida'
     }).min(6, {
-        mensaje: 'La contraseña debe tener mas de 6 caracteres'
+        message: 'La contraseña debe tener mas de 6 caracteres'
     })
 })
