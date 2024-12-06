@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import { createAccesToken } from "../libs/jwt.js";
-import  jwt  from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import { TOKEN_SECRET } from "../config/config.js";
 
 export const register = async (req, res) => {
@@ -43,10 +43,10 @@ export const login = async (req, res) => {
 
     const userFound = await User.findOne({ email })
 
-    if (!userFound) return res.status(400).json({ mensaje: "Usuario no encontrado" });
+    if (!userFound) return res.status(400).json({ message: "Usuario no encontrado" });
     const isMatch = await bcrypt.compare(password, userFound.password); //da un hash = string
 
-    if (!isMatch) return res.status(400).json({ mensaje: "contraseña incorrecta" })
+    if (!isMatch) return res.status(400).json({ message: "contraseña incorrecta" })
 
     const token = await createAccesToken({ id: userFound._id });
     res.cookie('token', token)

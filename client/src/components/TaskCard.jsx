@@ -1,5 +1,8 @@
 import { useTasks } from "../context/TaskContext";
 import { Link } from "react-router-dom";
+import days from "dayjs";
+import { utc } from "dayjs";
+days.extend(utc)
 
 export default function TaskCard({ task }) {
   const { deleteTask } = useTasks();
@@ -20,7 +23,7 @@ export default function TaskCard({ task }) {
         </div>
       </header>
       <p className="text-slate-300">{task.description}</p>
-      <p>{new Date(task.date).toLocaleDateString()}</p>
+      <p>{days(task.date).utc().format("DD/MM/YYYY")}</p>
     </div>
   );
 }
